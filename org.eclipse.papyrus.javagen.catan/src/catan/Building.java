@@ -12,11 +12,20 @@ public class Building {
 	/**
 	 * 
 	 */
-	public class Class1 {
-	};
-
+	
 	/**
 	 * 
 	 */
 	private int victoryPoints;
+	public Building(){
+		this.victoryPoints = victoryPoints;
+	}
+
+	public int getVictoryPoints(){
+		return victoryPoints;
+	}
+
+	public void setVictoryPoints(){
+		this.victoryPoints = victoryPoints;
+	}
 }
