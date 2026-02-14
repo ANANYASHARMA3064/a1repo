@@ -4,6 +4,7 @@
 
 package catan;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /************************************************************/
@@ -11,39 +12,28 @@ import java.util.Map;
  * 
  */
 public class Player {
-	/**
-	 * 
-	 */
-	public class Class1 {
-	};
-
-	/**
-	 * 
-	 */
 	private int playerId;
-	/**
-	 * 
-	 */
 	private int victoryPoints;
-	/**
-	 * 
-	 */
 	private boolean largestArmy;
-	/**
-	 * 
-	 */
 	private boolean largestVillage;
-	/**
-	 * 
-	 */
 	private Map<String, Integer> resources;
+
+	public Player(int playerId){
+		this.playerId = playerId;
+        this.victoryPoints = 0;
+        this.largestArmy = false;
+        this.largestVillage = false;
+        this.resources = new HashMap<>();
+	}
 
 	/**
 	 * 
 	 * @param type 
 	 * @param amount 
 	 */
-	public void addResources(String type, int amount) {
+	public void addResources(String type,int amount) {
+		if (amount<=0) return;
+        resources.put(type, resources.getOrDefault(type,0)+amount);
 	}
 
 	/**
@@ -53,7 +43,15 @@ public class Player {
 	 * @return 
 	 */
 	public boolean useResource(String type, int amount) {
-		return largestArmy;
+		if (amount <= 0){
+			return true;
+		}
+        int have=resources.getOrDefault(type, 0);
+        if (have<amount) {
+			return false;
+		} 
+        resources.put(type, have-amount);
+        return true;
 	}
 
 	/**
@@ -61,6 +59,9 @@ public class Player {
 	 * @return 
 	 */
 	public int getScore() {
-		return playerId;
+		return victoryPoints;
+	}
+	public void addVictoryPoints(int points){
+		victoryPoints+=points; 
 	}
 }

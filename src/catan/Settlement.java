@@ -8,15 +8,8 @@ package catan;
 /**
  * 
  */
-public class Building {
-	/**
-	 * 
-	 */
-	public class Class1 {
-	};
-
-	/**
-	 * 
-	 */
-	private int victoryPoints;
+public class Settlement extends Building {
+	public Settlement() {
+        super(1);
+    }
 }

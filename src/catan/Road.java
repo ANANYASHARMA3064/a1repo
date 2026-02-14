@@ -8,5 +8,9 @@ package catan;
 /**
  * 
  */
-public class City {
+public class Road {
+
+    public Road(){
+    }
+
 }

@@ -3,7 +3,7 @@
 // --------------------------------------------------------
 
 package catan;
-
+import java.util.Random;
 /************************************************************/
 /**
  * 
@@ -13,17 +13,26 @@ public class Dice {
 	 * 
 	 */
 	private int lastRoll;
-	/**
-	 * 
-	 */
 	private int numDice;
+	private Random randomNum; 
+
+	public Dice(){
+		this.numDice = 2;
+		this.randomNum = new Random();
+	}
 
 	/**
 	 * 
 	 * @return 
 	 */
 	public int roll() {
-		return lastRoll;
+		int sum = 0; 
+		for(int i =0; i<numDice; i++){
+			sum += randomNum.nextInt(6)	+ 1;
+		}
+		lastRoll = sum;
+		return sum;
+
 	}
 
 	/**
